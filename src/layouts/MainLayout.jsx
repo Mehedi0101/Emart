@@ -5,11 +5,11 @@ import Footer from "./Footer";
 const MainLayout = () => {
     return (
         <div>
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center mb-5">
                 <h1 className="text-3xl font-bold"><span className="text-red-600">E</span>mart</h1>
                 <Navbar></Navbar>
             </div>
-            <div className="min-h-[75vh]">
+            <div className="min-h-[72vh]">
                 <Outlet></Outlet>
             </div>
             <Footer></Footer>
