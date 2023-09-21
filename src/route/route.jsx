@@ -2,8 +2,11 @@ import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/home/Home";
 import Products from "../pages/products/Products";
-import Dashboard from "../pages/dashboard/Dashboard";
 import ProductDetails from "../pages/products/ProductDetails";
+import DashboardLayout from "../layouts/DashboardLayout";
+import DashboardDefault from "../pages/dashboard/DashboardDefault";
+import Profile from "../pages/dashboard/Profile";
+import EditProfile from "../pages/dashboard/EditProfile";
 
 const router = createBrowserRouter([
     {
@@ -26,7 +29,21 @@ const router = createBrowserRouter([
             },
             {
                 path: '/dashboard',
-                element: <Dashboard></Dashboard>
+                element: <DashboardLayout></DashboardLayout>,
+                children: [
+                    {
+                        path: '/dashboard',
+                        element: <DashboardDefault></DashboardDefault>
+                    },
+                    {
+                        path: '/dashboard/profile',
+                        element: <Profile></Profile>
+                    },
+                    {
+                        path: '/dashboard/edit-profile',
+                        element: <EditProfile></EditProfile>
+                    }
+                ]
             }
         ]
     },
