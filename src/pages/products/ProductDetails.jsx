@@ -1,18 +1,17 @@
-import Proptypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
+import { useLoaderData, useNavigate } from "react-router-dom";
 
-const Product = ({ product }) => {
+const ProductDetails = () => {
+
+    const { title, thumbnail, price, rating } = useLoaderData();
 
     const navigate = useNavigate();
 
-    const { id, title, thumbnail, price, rating } = product;
-
-    const handleShowDetails = () => {
-        navigate(`/products/${id}`);
+    const handleAddToCart =  () => {
+        navigate('/');
     }
 
     return (
-            <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow">
+        <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow mx-auto py-16">
                 <div className='flex justify-center items-center'>
                     <img className="max-h-[200px] p-8 rounded-t-lg object-cover" src={thumbnail} alt="product image" />
                 </div>
@@ -40,15 +39,11 @@ const Product = ({ product }) => {
                     </div>
                     <div className="flex items-center justify-between">
                         <span className="text-3xl font-bold text-gray-900">${price}</span>
-                        <button onClick={handleShowDetails} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Show Details</button>
+                        <button onClick={handleAddToCart} className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Add to cart</button>
                     </div>
                 </div>
             </div>
     );
 };
 
-Product.propTypes = {
-    product: Proptypes.object.isRequired
-}
-
-export default Product;
+export default ProductDetails;
